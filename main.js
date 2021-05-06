@@ -384,11 +384,75 @@ sayHello(boy.boyName, boy.boyAge, boy.boyJob);
 const nob = {
     nobRace: "ork",
     nobRangeWeapon: "shoota",
-    nobMeleeWeapon: "powerKlaw"
+    nobMeleeWeapon: "powerKlaw",
+    sayHello: ("green boy", "30", "ork")
 }
 console.log(nob.nobRace);
 console.log(nob.nobRangeWeapon);
+console.log(nob);
+
+// this внутри метода объекта ссылается на этот объект
+
+const object = {
+    name: "objectName",
+    speciality: "testObject",
+    sayGoodbye: function () {
+        console.log(`This is console goodbye log for ${this.objectName}`)
+    }
+}
+console.log(object);
+object.sayGoodbye();
 
 // когда объект совершает какое-то действие - это метод
 // функция, записанная в свойства объекта - метод 
 
+
+/* -------- функция  Конструктор создание объекта----------- */
+// capital letter 
+// эта функция будет создавать нам объекты 
+// вызвать функцию, передать в неё данные и создастся объект 
+// с этими данными 
+
+function Person(name, age, spec, city) {
+    this.name = name;
+    this.age = age;
+    this.spec = spec;
+    this.city = city;
+    this.sayHello = function () {
+        console.log(`Привет, моё имя: ${this.name} . Мне целых ${this.age} лет.`);
+    }
+    //при выполнении этой функции будет возвращён объект,
+    //который можно записать в переменную
+}
+
+const citizen = new Person("Alexander", 29, "codeMonkey", "Moscow");
+// new - для создания нового объекта
+console.log(citizen.sayHello());
+//теперь при помощи конструктора можно создавать другие объекты 
+const villager = new Person("Pavel", 35, "blacksmith", "New Vasyuki");
+villager.sayHello();
+
+
+/*-------------Классы в ES6--------------*/
+// смысл как в функции-конструкторе, но другой синтаксис 
+
+class Stranger {
+    constructor(name, age, spec, city) {
+        this.name = name;
+        this.age = age;
+        this.spec = spec;
+        this.city = city;
+    }
+
+    sayHello() {
+        console.log(`Привет, моё имя: ${this.name} . Мне целых ${this.age} лет.`);
+    }
+}
+
+const Gregory = new Stranger("Grigoriy", 28, "worker", "Tbilisi");
+// создаём константу Gregory, в которую записываем объект, который будет создан от класса Stranger
+console.log(Gregory);
+Gregory.sayHello();
+
+const Slava = new Stranger("Slava", 30, "engineer", "Minsk");
+Slava.sayHello();
