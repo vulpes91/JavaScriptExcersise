@@ -248,6 +248,147 @@ fruits.forEach(function (elementName, itemIndex) {
 const employees = ["Mikhail", "Sergei", "Alexander", "Pyotr", "Andrey"];
 
 employees.forEach(function (worker, i) {
-    console.log(`Worker ${worker} has taker the ${i} place`);
+    console.log(`Worker ${worker} has taken the ${i} place`);
 });
+
+/* -------- ФУНКЦИИ ----------- */
+// функция это область кода, которая имеет имя и мы можем вызывать его несколько раз 
+
+// let greeting1 = "Привет, Пётр, как дела?";
+// console.log(greeting1);
+// let greeting2 = "Привет, Михаил, как дела?";
+// console.log(greeting2);
+// let greeting3 = "Привет, Роман, как дела?";
+// console.log(greeting3);
+
+// в этом примере три переменные отличаются только именем. 
+
+
+function greetingGeneral(name) {
+    console.log(`Привет ${name}! Как поживаешь?`);
+}
+//в круглых скобках функции пишутся параметры которые идут внутри функции
+//в фигурных - сам код функции 
+greetingGeneral("Максим");
+greetingGeneral("Олег");
+greetingGeneral("Эльдар");
+greetingGeneral("Алексей");
+
+// в скобках пишется значение, которое подставится в изначальный код функции 
+// код функции описываестя один раз, затем просто подставляются разные параметры 
+
+function goodByeGeneral(workerName) {
+    console.log(`Goodbye, ${workerName}. We will miss you!`);
+}
+
+goodByeGeneral("Max");
+goodByeGeneral("Eric");
+goodByeGeneral("Paul");
+
+console.log("------------------");
+
+function calculateSum(x, y) {
+    // let result = x + y;
+    console.log(x + y);
+    return (x + y);
+    // return result; 
+    // console.log("monkey code");  
+}
+
+
+//return для возвращения какого-то значения из функции 
+// то, что написано после return , не выводится
+
+let res = calculateSum(calculateSum(10, 10), calculateSum(50, 50));
+console.log(`The total result is ${res}`);
+
+function calculateSubstraction(q, h) {
+    let substractionResult = q - h;
+    console.log(substractionResult);
+    return substractionResult;
+}
+
+calculateSubstraction(50, 43);
+
+let plusAndMinus = calculateSum(calculateSubstraction(100, 50), calculateSubstraction(75, 50));
+
+/* -------- Function declaration ----------- */
+
+// эта функция сработает, даже если она объявлена позже в том же файле
+// javascript просматривает документ два раза. 
+divideTwoNumbers(1000, 20);
+
+//задекларирована функция
+function divideTwoNumbers(x, y) {
+    let divideResult = x / y;
+    console.log(divideResult);
+}
+//вызов задекларированной функции 
+divideTwoNumbers(100000, 20);
+
+/* -------- Function expression ----------- */
+
+//функция записывается в переменную 
+let calculateMult = function (x, y) { let multiResult = x * y; console.log(multiResult); }
+//такие функции могут быть написаны только ПОСЛЕ объявления
+
+calculateMult(10, 5);
+
+/* -------- Объекты  ----------- */
+
+//объекты - способ группировки информации в объект 
+//например есть Пётр
+// const peterName = "Peter";
+// const peterAge = 28;
+// const peterJob = "cashier";
+// чтобы не делать много отдельных переменных, создаётся одна
+
+// выведет инфу об объекте в консоль
+
+// const codeMonkey = {
+//     name: "Coding Monkey",
+//     height: "1m",
+//     weight: 10,
+//     hasTail: true,
+//     codeGood: false
+// }
+
+// console.log(codeMonkey);
+
+
+function sayHello(name, age, job) {
+    console.log(`Hello, my name is ${name}. I am ${age} years old.
+     I work as a ${job}.`);
+}
+
+sayHello("Alex", 28, "coder");
+
+//выше - пример работы с функцией
+// если работаем с объектом: 
+const boy = {
+    boyName: "Maxim",
+    boyAge: 24,
+    boyJob: "carrier"
+};
+
+console.log(boy);
+//выведет просто распечатку в консоль, техническая
+// можно по отдельности обращаться к каждому свойству объекта -> "."
+console.log(boy.boyName); // выведет boyName объекта boy 
+console.log(boy.boyAge); // выведет boyAge объекта boy
+console.log(boy.boyJob); //выведет boyJob объекта boy 
+
+sayHello(boy.boyName, boy.boyAge, boy.boyJob);
+
+
+const nob = {
+    nobRace: "ork",
+    nobRangeWeapon: "shoota",
+    nobMeleeWeapon: "powerKlaw"
+}
+console.log(nob.nobRace);
+console.log(nob.nobRangeWeapon);
+
+// когда объект совершает какое-то действие - это метод
+// функция, записанная в свойства объекта - метод 
 
